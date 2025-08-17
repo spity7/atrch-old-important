@@ -26,7 +26,9 @@ app.use(
       "http://localhost:3000",
       "https://milaresidence.com",
       "https://mila-react.onrender.com",
-      "https://api.milaresidence.com"
+      "https://api.milaresidence.com",
+      "https://atrch.com",
+      "https://api.atrch.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
