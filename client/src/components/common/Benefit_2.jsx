@@ -35,7 +35,7 @@ export default function Benefit() {
               to={`/lifestyle`}
               className="tf-btn btn-view primary size-1 hover-btn-view"
             >
-              DISCOVER MORE
+              ABOUT US
               <span className="icon icon-arrow-right2" />
             </Link>
           </div>

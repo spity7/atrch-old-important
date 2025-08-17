@@ -996,7 +996,7 @@ label {
 }
 .main-header .inner-header-left {
   display: flex;
-  gap: 30px;
+  gap: 100px;
   align-items: center;
 }
 .main-header .inner-header {
@@ -9957,7 +9957,7 @@ tr {
     padding-right: 30px;
   }
   .main-header .inner-header-left {
-    gap: 50px;
+    gap: 100px;
   }
 
   .container-full {

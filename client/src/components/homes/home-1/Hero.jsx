@@ -21,7 +21,7 @@ export default function Hero() {
                   residence you dream of, let’s discuss for your dream house?
                 </p>
               </div>
-              <FilterTab />
+              {/* <FilterTab /> */}
             </div>
           </div>
         </div>

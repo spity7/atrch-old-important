@@ -151,7 +151,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <section className="">
+      {/* <section className="">
         <div
           id="map-contact"
           className="map-contact"
@@ -160,7 +160,7 @@ export default function Contact() {
         >
           <ContactMap />
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

@@ -109,7 +109,8 @@ export default function Properties() {
                         <div className="homelengo-box">
                           <div className="archive-top">
                             <Link
-                              to={`/mila-one/single/${property.propertyId}`}
+                              // to={`/mila-one/single/${property.propertyId}`}
+                              to={"#"}
                               className="images-group"
                             >
                               <div className="images-style">
@@ -122,7 +123,7 @@ export default function Properties() {
                                   height={405}
                                 />
                               </div>
-                              <div className="top">
+                              {/* <div className="top">
                                 <ul className="d-flex gap-6">
                                   <li className="flag-tag primary">
                                     {property.status}
@@ -131,7 +132,7 @@ export default function Properties() {
                                     {property.tags[1]}
                                   </li>
                                 </ul>
-                              </div>
+                              </div> */}
                               <div className="bottom">
                                 <svg
                                   width={16}
@@ -158,7 +159,7 @@ export default function Properties() {
                               </div>
                             </Link>
                           </div>
-                          <div className="archive-bottom">
+                          {/* <div className="archive-bottom">
                             <div className="content-top">
                               <h5 className="text-capitalize text-center">
                                 <Link
@@ -185,7 +186,7 @@ export default function Properties() {
                                 </h6>
                               </ul>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     ))

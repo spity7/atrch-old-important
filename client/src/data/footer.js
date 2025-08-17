@@ -3,8 +3,9 @@ export const footerSections = [
     heading: "Categories",
     links: [
       { href: "/", label: "Home" },
-      { href: "/lifestyle", label: "Lifestyle" },
-      { href: "/projects", label: "Projects" },
+      { href: "/lifestyle", label: "About Us" },
+      { href: "/Contact", label: "Contact Us" },
+      // { href: "/projects", label: "Projects" },
       // { href: "/gallery", label: "Gallery" },
     ],
   },
@@ -13,7 +14,7 @@ export const footerSections = [
     links: [
       { href: "/mila-one", label: "Property For Rent" },
       { href: "/mila-two", label: "Property For Sale" },
-      { href: "/contact", label: "Contact Us" },
+      // { href: "/Contact", label: "Contact Us" },
     ],
   },
 ];

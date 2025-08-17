@@ -5,17 +5,17 @@ export const menuItems = [
     isCurrent: true,
   },
   {
-    title: "LIFESTYLE",
+    title: "ABOUT",
     links: [{ href: "/lifestyle", label: "LIFESTYLE" }],
   },
-  {
-    title: "PROJECTS",
-    mainLink: "/projects",
-    links: [
-      { href: "/mila-one", label: "MILA 1" },
-      { href: "/mila-two", label: "MILA 2" },
-    ],
-  },
+  // {
+  //   title: "PROJECTS",
+  //   mainLink: "/projects",
+  //   links: [
+  //     { href: "/mila-one", label: "MILA 1" },
+  //     { href: "/mila-two", label: "MILA 2" },
+  //   ],
+  // },
   // {
   //   title: "GALLERY",
   //   links: [{ href: "/gallery", label: "GALLERY" }],
