@@ -7,15 +7,15 @@ export default function UpdateProperty({ propertyItem }) {
   const { handleUpdateProperty } = useGlobalContext();
   const showModal = useShowModal();
 
-  const [price, setPrice] = useState(propertyItem.price);
-  const [status, setStatus] = useState(propertyItem.status);
-  const [description, setDescription] = useState(propertyItem.description);
+  const [city, setCity] = useState(propertyItem.city);
+  const [type, setType] = useState(propertyItem.type);
+  // const [description, setDescription] = useState(propertyItem.description);
   const [gallery, setGallery] = useState(
     propertyItem.gallery || [
       { href: "", className: "", src: "" },
-      { href: "", className: "", src: "" },
-      { href: "", className: "", src: "" },
-      { href: "", className: "", src: "" },
+      // { href: "", className: "", src: "" },
+      // { href: "", className: "", src: "" },
+      // { href: "", className: "", src: "" },
     ]
   );
 
@@ -40,12 +40,12 @@ export default function UpdateProperty({ propertyItem }) {
 
   const handleSave = async () => {
     try {
-      console.log("Updating with status:", status);
+      console.log("Updating with type:", type);
 
       const updatedValues = {
-        price,
-        status,
-        description,
+        city,
+        type,
+        // description,
         gallery,
         // Add other fields here
         // title,
@@ -277,37 +277,38 @@ export default function UpdateProperty({ propertyItem }) {
           <div className="box-price-property">
             <div className="box grid-2 gap-30">
               <fieldset className="box-fieldset">
-                <label htmlFor="price">
-                  Price:<span>*</span>
+                <label htmlFor="city">
+                  City:<span>*</span>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
-                  placeholder="Price"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  placeholder="City"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               </fieldset>
               <fieldset className="box-fieldset">
                 <label htmlFor="neighborhood">
-                  Status:<span>*</span>
+                  Type:<span>*</span>
                 </label>
 
                 <DropdownSelect
-                  defaultOption={status}
+                  defaultOption={type}
                   options={[
-                    "available",
-                    "rented",
-                    "sold out",
-                    "under construction",
+                    "villa",
+                    "residential",
+                    "commercial",
+                    "chalet",
+                    "interiar",
                   ]}
-                  onChange={setStatus}
+                  onChange={setType}
                 />
               </fieldset>
             </div>
           </div>
         </div>
-        <div className="widget-box-2 mb-20">
+        {/* <div className="widget-box-2 mb-20">
           <div className="box-info-property">
             <fieldset className="box box-fieldset">
               <label htmlFor="desc">Description:</label>
@@ -319,9 +320,9 @@ export default function UpdateProperty({ propertyItem }) {
               />
             </fieldset>
           </div>
-        </div>
+        </div> */}
         <div className="widget-box-2 mb-20">
-          <h5 className="title text-center">Gallery (4 images)</h5>
+          <h5 className="title text-center">Gallery</h5>
           <div className="grid-2 gap-20">
             {gallery.map((img, idx) => (
               <div key={idx} className="item-upload file-delete">

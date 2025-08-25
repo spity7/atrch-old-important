@@ -5,7 +5,7 @@ import userAtom from "@/atoms/userAtom";
 import useShowModal from "@/hooks/useShowModal";
 
 axios.defaults.withCredentials = true;
-const BASE_URL = "https://api.atrch.com/api/v1/";
+const BASE_URL = "http://localhost:5003/api/v1/";
 
 const GlobalContext = createContext();
 
@@ -211,6 +211,20 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const createProperty = async (city, type, gallery) => {
+    try {
+      const response = await axios.post(`${BASE_URL}create-property`, {
+        city,
+        type,
+        gallery,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error creating property:", error);
+      throw error;
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -234,6 +248,7 @@ export const GlobalProvider = ({ children }) => {
         fetchPropertyByPropertyId,
         handleUpdateProperty,
         contactUs,
+        createProperty,
       }}
     >
       {children}

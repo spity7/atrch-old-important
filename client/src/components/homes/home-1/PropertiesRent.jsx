@@ -121,6 +121,12 @@ export default function Properties() {
                                   src={property.gallery[0].src}
                                   width={615}
                                   height={405}
+                                  style={{
+                                    width: "100%",
+                                    height: "300px",
+                                    objectFit: "cover",
+                                    borderradius: "8px",
+                                  }}
                                 />
                               </div>
                               {/* <div className="top">
@@ -155,7 +161,7 @@ export default function Properties() {
                                     strokeLinejoin="round"
                                   />
                                 </svg>
-                                {property.address}
+                                {property.city}
                               </div>
                             </Link>
                           </div>
@@ -210,7 +216,7 @@ export default function Properties() {
                   />
                 </div>
 
-                <div className="text-center">
+                {/* <div className="text-center">
                   <Link
                     to={`/mila-one`}
                     className="tf-btn btn-view primary size-1 hover-btn-view"
@@ -218,7 +224,7 @@ export default function Properties() {
                     View All Rent Properties
                     <span className="icon icon-arrow-right2" />
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

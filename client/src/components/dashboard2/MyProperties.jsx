@@ -84,7 +84,16 @@ export default function MyProperty() {
             </fieldset>
           </div>
         </div> */}
-          <ul className="nav-tab-recommended justify-content-md-center mt-20">
+          <div className="text-center" style={{ marginBottom: "50px" }}>
+            <Link
+              to={`/create-property`}
+              className="tf-btn btn-view primary size-1 hover-btn-view"
+            >
+              Create Property
+              <span className="icon icon-arrow-right2" />
+            </Link>
+          </div>
+          <ul className="nav-tab-recommended justify-content-md-center mt-30">
             {types.map((type) => (
               <Button
                 key={type}
@@ -107,7 +116,7 @@ export default function MyProperty() {
                   <thead>
                     <tr>
                       <th>Listing</th>
-                      <th>Project</th>
+                      <th>City</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -133,7 +142,7 @@ export default function MyProperty() {
                                 />
                               </Link>
                             </div>
-                            <div className="content d-flex flex-column justify-content-center gap-10">
+                            {/* <div className="content d-flex flex-column justify-content-center gap-10">
                               <div className="title fs-4 fw-bold">
                                 <Link
                                   to={`/${
@@ -153,7 +162,7 @@ export default function MyProperty() {
                               <div className="text-btn text-primary">
                                 ${property.price.toLocaleString()}
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </td>
                         <td
@@ -172,7 +181,7 @@ export default function MyProperty() {
                                 property.status == "Pending" ? "pending" : ""
                               }  ${property.status == "Sold" ? "sold" : ""}`}
                             >
-                              {property.project}
+                              {property.city}
                             </h5>
                           </div>
                         </td>

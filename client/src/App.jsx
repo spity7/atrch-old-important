@@ -51,6 +51,7 @@ import UpdatePropertyPage from "./pages/dashboard/update-property";
 import { Modal } from "bootstrap";
 import { GlobalProvider } from "./context/globalContext";
 import AuthPage from "./pages/auth/AuthPage";
+import CreatePropertyPage from "./pages/dashboard/create-property";
 
 import "../public/css/styles.css";
 import { useAtom } from "jotai";
@@ -179,6 +180,7 @@ function App() {
                 path="update-property/:id"
                 element={<UpdatePropertyPage />}
               />
+              <Route path="create-property" element={<CreatePropertyPage />} />
 
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/verify-email" element={<VerifyEmailCard />} />

@@ -2,6 +2,51 @@ const Property = require("../models/propertyModel.js");
 const { Parser } = require("json2csv");
 const logger = require("../config/logger.js");
 
+// default property template
+const defaultPropertyData = {
+  project: "mila one",
+  status: "available",
+  imgSrc: "/images/home/BR-Mila-Scene-08.0.jpg",
+  alt: "img",
+  address: "Tyre / Lebanon",
+  title: "Studio",
+  description:
+    "Perfectly designed for modern urban living, our studio units offer a blend of style and convenience.",
+  yearBuilt: 2024,
+  features: [
+    [
+      "Open-Concept Living",
+      "Flexible Furnishing Options",
+      "Sleek Kitchenette",
+      "Breathtaking Views",
+    ],
+  ],
+  city: "Tyre",
+  country: "Lebanon",
+  mapSrc: "/images/mila-one-maps/f2-06.jpg",
+  beds: 1,
+  rooms: 2,
+  baths: 1,
+  sqm: 63,
+  tags: ["Featured", "For Rent"],
+  avatar: "/images/home/BR-Mila-Scene-08.0.jpg",
+  agent: "Ali",
+  lat: 40.7279707552121,
+  long: -74.07152705896405,
+  filterOptions: ["Studio"],
+  type: ["interiar"],
+  floor: "First",
+  block: "A",
+  price: 125,
+  gallery: [
+    {
+      href: "/images/studio/studio1.jpeg",
+      className: "item2 box-img",
+      src: "/images/studio/studio1.jpeg",
+    },
+  ],
+};
+
 exports.getAllProperties = async (req, res) => {
   try {
     const { search, project, types = [], page = 1, limit = 6 } = req.query;
@@ -92,5 +137,31 @@ exports.updateProperty = async (req, res) => {
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
+  }
+};
+
+exports.createProperty = async (req, res) => {
+  try {
+    const { city, type, gallery } = req.body;
+
+    if (!city || !type || !gallery || gallery.length === 0) {
+      return res
+        .status(400)
+        .json({ error: "City, type, and gallery are required" });
+    }
+
+    // merge defaults with user-provided data (override default fields if provided)
+    const newPropertyData = {
+      ...defaultPropertyData,
+      city,
+      type,
+      gallery,
+    };
+
+    const newProperty = await Property.create(newPropertyData);
+
+    res.status(201).json(newProperty);
+  } catch (error) {
+    res.status(500).json({ error: "Server Error", details: error.message });
   }
 };
