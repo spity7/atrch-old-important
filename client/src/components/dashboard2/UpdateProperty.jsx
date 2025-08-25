@@ -295,13 +295,7 @@ export default function UpdateProperty({ propertyItem }) {
 
                 <DropdownSelect
                   defaultOption={type}
-                  options={[
-                    "villa",
-                    "residential",
-                    "commercial",
-                    "chalet",
-                    "interiar",
-                  ]}
+                  options={["villas", "residential", "commercial", "chalet"]}
                   onChange={setType}
                 />
               </fieldset>
