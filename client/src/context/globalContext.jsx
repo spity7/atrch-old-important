@@ -5,7 +5,7 @@ import userAtom from "@/atoms/userAtom";
 import useShowModal from "@/hooks/useShowModal";
 
 axios.defaults.withCredentials = true;
-const BASE_URL = "https://api.atrch.com/api/v1/";
+const BASE_URL = "http://localhost:5003/api/v1/";
 
 const GlobalContext = createContext();
 
@@ -225,6 +225,17 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const handleDeleteProperty = async (propertyId) => {
+    try {
+      const response = await axios.delete(
+        `${BASE_URL}delete-property/${propertyId}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -249,6 +260,7 @@ export const GlobalProvider = ({ children }) => {
         handleUpdateProperty,
         contactUs,
         createProperty,
+        handleDeleteProperty,
       }}
     >
       {children}

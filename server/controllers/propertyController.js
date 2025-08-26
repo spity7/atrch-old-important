@@ -165,3 +165,24 @@ exports.createProperty = async (req, res) => {
     res.status(500).json({ error: "Server Error", details: error.message });
   }
 };
+
+exports.deleteProperty = async (req, res) => {
+  try {
+    const { propertyId } = req.params;
+
+    const deletedProperty = await Property.findOneAndDelete({
+      propertyId: Number(propertyId),
+    });
+
+    if (!deletedProperty) {
+      return res.status(404).json({ error: "Property not found" });
+    }
+
+    res.status(200).json({ message: "Property deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error",
+      details: error.message,
+    });
+  }
+};

@@ -5,6 +5,7 @@ const {
   getTypes,
   updateProperty,
   createProperty,
+  deleteProperty,
 } = require("../controllers/propertyController");
 
 const protectRoute = require("../middlewares/protectRoute.js");
@@ -16,5 +17,6 @@ router.get("/property/:propertyId", getPropertyByPropertyId);
 router.put("/update-property/:propertyId", protectRoute, updateProperty);
 router.get("/types", getTypes);
 router.post("/create-property", protectRoute, createProperty);
+router.delete("/delete-property/:propertyId", protectRoute, deleteProperty);
 
 module.exports = router;
