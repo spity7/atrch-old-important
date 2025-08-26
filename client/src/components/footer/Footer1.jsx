@@ -76,7 +76,7 @@ export default function Footer1() {
                     alt="logo"
                     width={196}
                     height={48}
-                    src="/images/logo/Logo-Mila-white.png"
+                    src="/images/logo/Logo white - atrch.png"
                   />
                 </Link>
               </div>
@@ -96,11 +96,11 @@ export default function Footer1() {
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-phone2 fs-20 text-variant-2" />
                     <a
-                      href="https://wa.me/96170898181"
+                      href="https://wa.me/96171601751"
                       className="text-white caption-1"
                       target="_blank"
                     >
-                      +961 70 89 81 81
+                      +961 71 601 751
                     </a>
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">

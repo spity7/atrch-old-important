@@ -10,15 +10,16 @@ export default function Hero() {
             <div className="slider-content">
               <div className="heading text-center">
                 <div className="title-large text-white animationtext slide">
-                  Where Tranquility Meets Modern Living
+                  Shape Your Architectural Identity
                   {/* <WordEffect1 string={["Dream Home", "Perfect Home"]} /> */}
                 </div>
                 <p
                   className="subtitle text-white body-2 wow fadeInUp"
                   data-wow-delay=".2s"
                 >
-                  We are a real estate agency that will help you find the best
-                  residence you dream of, let’s discuss for your dream house?
+                  “We make it simple to bring your vision to life — transforming
+                  ideas into spaces where design meets quality, and every detail
+                  is crafted to inspire, endure, and tell a story that lasts.”
                 </p>
               </div>
               {/* <FilterTab /> */}

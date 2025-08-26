@@ -9,9 +9,9 @@ export default function Benefit() {
         <div className="content-left img-animation wow my-3 mx-1">
           <img
             className="lazyload"
-            data-src="/images/banner/BR Mila - Scene 08.0.jpg"
+            data-src="/images/banner/VZ - cam009.1.jpg"
             alt=""
-            src="/images/banner/BR Mila - Scene 08.0.jpg"
+            src="/images/banner/VZ - cam009.1.jpg"
             width={950}
             height={908}
           />
@@ -19,15 +19,16 @@ export default function Benefit() {
         <div className="content-right">
           <div className="box-title wow fadeInUp">
             <div className="text-subtitle text-primary">Get to know us</div>
-            <h3 className="title mt-4">Modern & luxury living complexes</h3>
+            <h3 className="title mt-4">
+              Innovative & Innovative Architectural Solutions
+            </h3>
             <p className="desc text-variant-1 fs-6">
-              Lifestyle apartments are designed to offer a complete living
-              experience that goes beyond just a place to sleep. These modern
-              apartments often come fully furnished and boast amenities like
-              swimming pools, gyms, and restaurant. Residents can relax in
-              beautifully landscaped gardens, entertain guests in rooftop
-              lounges with stunning city views, and enjoy the peace of mind that
-              comes with 24-hour security and on-site property management.
+              “We create spaces that go beyond aesthetics—places that serve
+              people, inspire communities, and stand the test of time. From
+              concept development and detailed 2D plans to advanced 3D
+              visualizations, we transform ideas into well-crafted architectural
+              solutions that enhance everyday living while respecting both
+              environment and context.”
             </p>
           </div>
           <div className="text-center">

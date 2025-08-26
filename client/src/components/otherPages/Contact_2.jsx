@@ -145,7 +145,7 @@ export default function Contact() {
                   <li className="box">
                     <h6 className="title">Infomation:</h6>
                     <p className="text-variant-1">
-                      +961 70 89 81 81 <br />
+                      +961 71 601 751 <br />
                       info@milaresidence.com
                     </p>
                   </li>

@@ -76,7 +76,7 @@ export default function Properties() {
             <div className="text-subtitle text-primary">
               Apartments & complex
             </div>
-            <h3 className="mt-4 title">Rent with MILA 1</h3>
+            <h3 className="mt-4 title">Our Projects</h3>
           </div>
           <div
             className="flat-tab-recommended flat-animate-tab wow fadeInUp"

@@ -36,7 +36,7 @@ export default function Header1({
                         width={100}
                         className="logo-1"
                         height={48}
-                        src="/images/logo/Logo-Mila-color.png"
+                        src="/images/logo/Logo Black - atrch.png"
                       />
                       <img
                         alt="logo"
@@ -89,7 +89,7 @@ export default function Header1({
                 <div className="flat-bt-top">
                   <Link
                     className="tf-btn primary"
-                    to="https://wa.me/96170898181"
+                    to="https://wa.me/96171601751"
                     target="_blank"
                   >
                     <svg
@@ -153,7 +153,7 @@ export default function Header1({
             </div>
             <div className="mobi-icon-box">
               <div className="box d-flex align-items-center">
-                  <span className="icon icon-phone2" />
+                <span className="icon icon-phone2" />
                 <Link to="https://wa.me/96170898181" target="_blank">
                   <div>+961 70 89 81 81</div>
                 </Link>
