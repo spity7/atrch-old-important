@@ -11,7 +11,7 @@ export default function Properties() {
   const [allProperties, setAllProperties] = useState([]);
   const [totalProperties, setTotalProperties] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(6);
+  const [pageSize, setPageSize] = useState(12);
   const [types, setTypes] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
 
@@ -73,10 +73,10 @@ export default function Properties() {
       <section className="flat-section flat-recommended">
         <div className="container">
           <div className="box-title text-center wow fadeInUp">
-            <div className="text-subtitle text-primary">
+            {/* <div className="text-subtitle text-primary">
               Apartments & complex
-            </div>
-            <h3 className="mt-4 title">Our Projects</h3>
+            </div> */}
+            <h3 className="mt-4 title">Our Architecture</h3>
           </div>
           <div
             className="flat-tab-recommended flat-animate-tab wow fadeInUp"
@@ -86,9 +86,10 @@ export default function Properties() {
               {types.map((type) => (
                 <Button
                   key={type}
-                  bg={selectedTypes.includes(type) ? "#6D574A" : "#e0e0e0"}
+                  bg={selectedTypes.includes(type) ? "black" : "white"}
                   padding="10px 20px"
-                  borderradius="5px"
+                  borderradius="10px"
+                  border="1px solid gray"
                   color={selectedTypes.includes(type) ? "#ffffff" : "#000000"}
                   hoverBg={selectedTypes.includes(type) ? "#6D574A" : "#c3c3c3"}
                   disabledColor="#c3eddf"

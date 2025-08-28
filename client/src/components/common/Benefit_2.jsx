@@ -18,9 +18,9 @@ export default function Benefit() {
         </div>
         <div className="content-right">
           <div className="box-title wow fadeInUp">
-            <div className="text-subtitle text-primary">Get to know us</div>
+            <div className="text-subtitle text-primary">Get to know Atrch</div>
             <h3 className="title mt-4">
-              Innovative & Innovative Architectural Solutions
+              Innovative & Modern Architectural Solutions
             </h3>
             <p className="desc text-variant-1 fs-6">
               “We create spaces that go beyond aesthetics—places that serve
@@ -31,7 +31,7 @@ export default function Benefit() {
               environment and context.”
             </p>
           </div>
-          <div className="text-center">
+          <div className="">
             <Link
               to={`/lifestyle`}
               className="tf-btn btn-view primary size-1 hover-btn-view"

@@ -9,13 +9,17 @@ export default function Hero() {
           <div className="col-lg-12">
             <div className="slider-content">
               <div className="heading text-center">
-                <div className="title-large text-white animationtext slide">
+                <div
+                  className="title-large text-white animationtext slide"
+                  style={{ textAlign: "left" }}
+                >
                   Shape Your Architectural Identity
                   {/* <WordEffect1 string={["Dream Home", "Perfect Home"]} /> */}
                 </div>
                 <p
                   className="subtitle text-white body-2 wow fadeInUp"
                   data-wow-delay=".2s"
+                  style={{ paddingLeft: 0, width: "80%" }}
                 >
                   “We make it simple to bring your vision to life — transforming
                   ideas into spaces where design meets quality, and every detail

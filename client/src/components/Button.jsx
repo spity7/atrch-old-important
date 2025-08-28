@@ -7,6 +7,7 @@ function Button(props) {
       bg={props.bg}
       padding={props.padding}
       borderradius={props.borderradius}
+      border={props.border}
       color={props.color}
       hoverbg={props.hoverBg}
       disabledcolor={props.disabledColor}
@@ -32,6 +33,7 @@ const ButtonStyled = styled.button`
   background: ${(props) => props.bg};
   padding: ${(props) => props.padding};
   border-radius: ${(props) => props.borderradius};
+  border: ${(props) => props.border};
   color: ${(props) =>
     props.disabled ? props.disabledcolor || "#ccc" : props.color};
   max-width: 100%;

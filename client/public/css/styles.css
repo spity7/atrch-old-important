@@ -3031,17 +3031,25 @@ label {
   border-color: #6d574a;
 }
 .tf-btn.primary {
-  background-color: #6d574a;
+  background-color: black;
   color: #ffffff;
   border-color: #6d574a;
 }
 .tf-btn.primary:hover {
-  background-color: #9d9189;
-  border-color: #9d9189;
+  background-color: white;
+  border-color: black;
+  color: black;
+  font-weight: 900;
 }
-.tf-btn.primary .icon {
-  color: #ffffff;
+.tf-btn.primary svg {
+  fill: white; /* default color */
+  transition: fill 0.3s ease; /* smooth transition */
 }
+
+.tf-btn.primary:hover svg {
+  fill: black; /* hover color */
+}
+
 .tf-btn.size-1 {
   padding: 11px 36px;
   min-width: 244px;
@@ -8329,7 +8337,7 @@ label {
   transition: all 0.3s ease;
 }
 .contact-info .box .box-social .item:hover {
-  background-color: #6D574A;
+  background-color: black;
   border-color: #6D574A;
 }
 .contact-info .box .box-social .item:hover svg path {

@@ -140,22 +140,22 @@ export default function Contact() {
                 <ul>
                   <li className="box">
                     <h6 className="title">Address:</h6>
-                    <p className="text-variant-1">Tyre / Lebanon</p>
+                    <p className="text-variant-1">Beirut / Tyre , Lebanon</p>
                   </li>
                   <li className="box">
                     <h6 className="title">Infomation:</h6>
                     <p className="text-variant-1">
                       +961 71 601 751 <br />
-                      info@milaresidence.com
+                      atrchstudio@gmail.com
                     </p>
                   </li>
-                  <li className="box">
+                  {/* <li className="box">
                     <div className="title">Opentime:</div>
                     <p className="text-variant-1">
                       Monay - Friday: 08:00 - 20:00 <br />
                       Saturday - Sunday: 10:00 - 18:00
                     </p>
-                  </li>
+                  </li> */}
                   <li className="box">
                     <div className="title">Follow Us:</div>
                     <ul className="box-social">

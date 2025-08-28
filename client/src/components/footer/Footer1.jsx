@@ -69,7 +69,7 @@ export default function Footer1() {
       <div className="inner-footer">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-6 col-md-6">
               <div className="footer-logo mb-30">
                 <Link to={`/`}>
                   <img
@@ -82,7 +82,7 @@ export default function Footer1() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6">
+            <div className="col-lg-6 col-md-6">
               <div className="footer-cl-1">
                 <p className="text-variant-2">
                   Timeless Elegance, Where Minimalism Intersects With
@@ -91,7 +91,7 @@ export default function Footer1() {
                 <ul className="mt-12">
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mapPinLine fs-20 text-variant-2" />
-                    <p className="text-white">Tyre, Lebanon</p>
+                    <p className="text-white">Beirut / Tyre , Lebanon</p>
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-phone2 fs-20 text-variant-2" />
@@ -105,12 +105,12 @@ export default function Footer1() {
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mail fs-20 text-variant-2" />
-                    <p className="text-white">info@milaresidence.com</p>
+                    <p className="text-white">atrchstudio@gmail.com</p>
                   </li>
                 </ul>
               </div>
             </div>
-            {footerSections.map((section, index) => (
+            {/* {footerSections.map((section, index) => (
               <div key={index} className="col-lg-2 col-md-6">
                 <div className={`footer-cl-${index + 2} footer-col-block`}>
                   <div className="fw-7 text-white footer-heading-mobile">
@@ -132,7 +132,7 @@ export default function Footer1() {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
@@ -140,14 +140,14 @@ export default function Footer1() {
         <div className="container">
           <div className="content-footer-bottom">
             <div className="copyright">
-              © 2024 Copyrights by Buytly. All Rights Reserved
+              © 2025 Copyrights by Atrch. All Rights Reserved
             </div>
             <div className="wd-social">
               <span>Follow Us:</span>
               <ul className="list-social d-flex align-items-center">
                 <li>
                   <a
-                    href="https://www.instagram.com/mila.residence/?igsh=N2FueTB5bzJtdnRm#"
+                    href="https://www.instagram.com/ahmadalatrch/"
                     target="_blank"
                     className="box-icon w-40 social"
                   >
@@ -168,7 +168,7 @@ export default function Footer1() {
               </ul>
             </div>
             <ul className="menu-bottom">
-              <li>
+              {/* <li>
                 <Link to={`/our-service`}>Terms Of Services</Link>
               </li>
               <li>
@@ -176,7 +176,7 @@ export default function Footer1() {
               </li>
               <li>
                 <Link to={`/contact`}>Cookie Policy</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
