@@ -19,8 +19,8 @@ import Contact_2 from "@/components/otherPages/Contact_2";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Mila",
-  description: "Mila",
+  title: "Atrch",
+  description: "Atrch",
 };
 export default function Home() {
   return (

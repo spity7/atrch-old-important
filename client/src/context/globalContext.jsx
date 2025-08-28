@@ -211,12 +211,13 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const createProperty = async (city, type, gallery) => {
+  const createProperty = async (city, type, gallery, order) => {
     try {
       const response = await axios.post(`${BASE_URL}create-property`, {
         city,
         type,
         gallery,
+        order,
       });
       return response.data;
     } catch (error) {

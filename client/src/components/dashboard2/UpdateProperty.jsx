@@ -18,6 +18,7 @@ export default function UpdateProperty({ propertyItem }) {
       // { href: "", className: "", src: "" },
     ]
   );
+  const [order, setOrder] = useState(propertyItem.order);
 
   // Handle image file change
   const handleGalleryChange = (e, idx) => {
@@ -49,6 +50,7 @@ export default function UpdateProperty({ propertyItem }) {
         gallery,
         // Add other fields here
         // title,
+        order,
       };
       await handleUpdateProperty(propertyItem.propertyId, updatedValues);
       showModal("Success", "Property updated successfully!", "success");
@@ -275,7 +277,7 @@ export default function UpdateProperty({ propertyItem }) {
         </div> */}
         <div className="widget-box-2 mb-20">
           <div className="box-price-property">
-            <div className="box grid-2 gap-30">
+            <div className="box grid-3 gap-30">
               <fieldset className="box-fieldset">
                 <label htmlFor="city">
                   City:<span>*</span>
@@ -297,6 +299,18 @@ export default function UpdateProperty({ propertyItem }) {
                   defaultOption={type}
                   options={["villas", "residential", "commercial", "chalet"]}
                   onChange={setType}
+                />
+              </fieldset>
+              <fieldset className="box-fieldset">
+                <label htmlFor="city">
+                  Order:<span>*</span>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Order"
+                  value={order}
+                  onChange={(e) => setOrder(e.target.value)}
                 />
               </fieldset>
             </div>

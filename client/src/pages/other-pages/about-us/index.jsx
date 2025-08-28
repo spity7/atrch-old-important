@@ -13,8 +13,8 @@ import Benefits from "@/components/homes/home-5/Benefits";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "LifeStyle",
-  description: "Mila",
+  title: "Atrch",
+  description: "Atrch",
 };
 export default function AboutUsPage() {
   return (

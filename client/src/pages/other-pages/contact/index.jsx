@@ -9,8 +9,8 @@ import Benefit from "@/components/homes/home-2/Benefit";
 
 import MetaComponent from "@/components/common/MetaComponent";
 const metadata = {
-  title: "Contact Us",
-  description: "Mila",
+  title: "Atrch",
+  description: "Atrch",
 };
 export default function ContactPage() {
   return (

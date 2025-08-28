@@ -13,6 +13,7 @@ export default function CreateProperty() {
   const [gallery, setGallery] = useState([
     { src: "", href: "", className: "item2 box-img" },
   ]);
+  const [order, setOrder] = useState("");
 
   // Handle image file change
   const handleGalleryChange = (e, idx) => {
@@ -43,10 +44,10 @@ export default function CreateProperty() {
 
   const handleSave = async () => {
     try {
-      if (!city || !type || gallery.length === 0) {
+      if (!city || !type || gallery.length === 0 || !order) {
         showModal(
           "Error",
-          "City, type, and at least one image are required.",
+          "City, type, order, and at least one image are required.",
           "error"
         );
         return;
@@ -56,15 +57,17 @@ export default function CreateProperty() {
         city,
         type: [type], // keep type as array like backend expects
         gallery,
+        order,
       };
 
-      await createProperty(city, [type], gallery);
+      await createProperty(city, [type], gallery, order);
       showModal("Success", "Property created successfully!", "success");
 
       // reset form
       setCity("");
       setType("");
       setGallery([{ src: "", href: "", className: "item2 box-img" }]);
+      setOrder("");
     } catch (error) {
       showModal("Error", "Failed to create property.", "error");
     }
@@ -76,7 +79,7 @@ export default function CreateProperty() {
       <div className="main-content-inner">
         <div className="widget-box-2 mb-20">
           <div className="box-price-property">
-            <div className="box grid-2 gap-30">
+            <div className="box grid-3 gap-30">
               <fieldset className="box-fieldset">
                 <label htmlFor="city">
                   City:<span>*</span>
@@ -104,6 +107,18 @@ export default function CreateProperty() {
                     "interiar",
                   ]}
                   onChange={setType}
+                />
+              </fieldset>
+              <fieldset className="box-fieldset">
+                <label htmlFor="city">
+                  Order:<span>*</span>
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Order"
+                  value={order}
+                  onChange={(e) => setOrder(e.target.value)}
                 />
               </fieldset>
             </div>

@@ -68,7 +68,7 @@ exports.getAllProperties = async (req, res) => {
     }
 
     const properties = await Property.find(query)
-      .sort({ createdAt: 1 })
+      .sort({ order: 1, createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(Number(limit));
 
@@ -142,12 +142,12 @@ exports.updateProperty = async (req, res) => {
 
 exports.createProperty = async (req, res) => {
   try {
-    const { city, type, gallery } = req.body;
+    const { city, type, gallery, order } = req.body;
 
-    if (!city || !type || !gallery || gallery.length === 0) {
+    if (!city || !type || !gallery || gallery.length === 0 || !order) {
       return res
         .status(400)
-        .json({ error: "City, type, and gallery are required" });
+        .json({ error: "City, type, order, and gallery are required" });
     }
 
     // merge defaults with user-provided data (override default fields if provided)
@@ -156,6 +156,7 @@ exports.createProperty = async (req, res) => {
       city,
       type,
       gallery,
+      order,
     };
 
     const newProperty = await Property.create(newPropertyData);

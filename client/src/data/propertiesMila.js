@@ -56,6 +56,7 @@ export const Properties = [
       //   src: "/images/banner/BR Mila - Scene 09.0.jpg",
       // },
     ],
+    order: 99,
   },
   {
     project: "mila one",
@@ -114,6 +115,7 @@ export const Properties = [
       //   src: "/images/banner/BR Mila - Scene 09.0.jpg",
       // },
     ],
+    order: 99,
   },
   {
     project: "mila one",
@@ -172,6 +174,7 @@ export const Properties = [
       //   src: "/images/banner/BR Mila - Scene 09.0.jpg",
       // },
     ],
+    order: 99,
   },
   {
     project: "mila one",
@@ -230,6 +233,7 @@ export const Properties = [
       //   src: "/images/banner/BR Mila - Scene 09.0.jpg",
       // },
     ],
+    order: 99,
   },
   // {
   //   project: "mila one",
