@@ -15,6 +15,8 @@ export default function CreateProperty() {
   ]);
   const [order, setOrder] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   // Handle image file change
   const handleGalleryChange = (e, idx) => {
     const file = e.target.files[0];
@@ -52,6 +54,7 @@ export default function CreateProperty() {
         );
         return;
       }
+      setLoading(true);
 
       const newProperty = {
         city,
@@ -70,6 +73,8 @@ export default function CreateProperty() {
       setOrder("");
     } catch (error) {
       showModal("Error", "Failed to create property.", "error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -150,8 +155,12 @@ export default function CreateProperty() {
           </div>
         </div>
         <div className="box-btn">
-          <button onClick={handleSave} className="tf-btn primary">
-            Create Property
+          <button
+            onClick={handleSave}
+            className="tf-btn primary"
+            disabled={loading}
+          >
+            {loading ? "Creating..." : "Create Property"}
           </button>
           {/* <a href="#" className="tf-btn btn-line">
             Save &amp; Preview
