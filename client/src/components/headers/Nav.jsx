@@ -11,6 +11,16 @@ export default function Nav() {
   const { handleLogout } = useGlobalContext();
 
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user-app"));
+    if (!userData || Date.now() > userData.expiry) {
+      localStorage.removeItem("user-app");
+      setIsAuthenticated(false);
+    } else {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  useEffect(() => {
     // Function to update authentication state
     const checkAuth = () => {
       setIsAuthenticated(!!localStorage.getItem("user-app"));
