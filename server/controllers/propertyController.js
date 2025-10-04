@@ -290,19 +290,51 @@ exports.deleteProperty = async (req, res) => {
   try {
     const { propertyId } = req.params;
 
-    const deletedProperty = await Property.findOneAndDelete({
-      propertyId: Number(propertyId),
-    });
-
-    if (!deletedProperty) {
-      return res.status(404).json({ error: "Property not found" });
+    // Find property by propertyId (not Mongo _id)
+    const property = await Property.findOne({ propertyId: Number(propertyId) });
+    if (!property) {
+      return res.status(404).json({ message: "Property not found" });
     }
+
+    // Extract image file names from the gallery
+    const gallery = property.gallery || [];
+    const fileNames = gallery
+      .map((img) => {
+        if (!img.src) return null;
+        try {
+          const parts = decodeURIComponent(img.src).split("/");
+          return parts[parts.length - 1];
+        } catch (err) {
+          console.warn("Failed to parse filename:", img.src);
+          return null;
+        }
+      })
+      .filter(Boolean);
+
+    // Delete files from GCS
+    if (fileNames.length > 0) {
+      await Promise.all(
+        fileNames.map(async (fileName) => {
+          try {
+            await bucket.file(fileName).delete();
+            console.log(`🗑️ Deleted from GCS: ${fileName}`);
+          } catch (err) {
+            if (err.code === 404) {
+              console.warn(`⚠️ File not found on GCS: ${fileName}`);
+            } else {
+              console.error(`❌ Failed to delete ${fileName}:`, err.message);
+            }
+          }
+        })
+      );
+    }
+
+    // Delete from MongoDB
+    await Property.deleteOne({ propertyId: Number(propertyId) });
 
     res.status(200).json({ message: "Property deleted successfully" });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error",
-      details: error.message,
-    });
+    console.error("deleteProperty error:", error);
+    res.status(500).json({ message: "Server error deleting property" });
   }
 };
