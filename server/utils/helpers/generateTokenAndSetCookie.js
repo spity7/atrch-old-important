@@ -10,13 +10,13 @@ const generateTokenAndSetCookie = (userId, res) => {
   try {
     // Generating JWT token with expiration of 1 day
     const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "7d",
     });
 
     // Setting the token as a cookie in the response
     res.cookie("jwt", token, {
       httpOnly: true, // prevents client-side JS from accessing the cookie
-      maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day in milliseconds
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 1 day in milliseconds
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // CSRF protection
       secure: process.env.NODE_ENV === "production", // only set as secure cookie in production
     });

@@ -101,7 +101,7 @@ export const GlobalProvider = ({ children }) => {
         if (localStorage.getItem("signup-status")) {
           localStorage.removeItem("signup-status");
         }
-        const expiry = Date.now() + 24 * 60 * 60 * 1000; // 1 day
+        const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000; // 1 day
         localStorage.setItem("user-app", JSON.stringify({ ...data, expiry }));
 
         setUser(data);
