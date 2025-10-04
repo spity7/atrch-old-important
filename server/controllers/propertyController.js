@@ -1,6 +1,7 @@
 const Property = require("../models/propertyModel.js");
 const { Parser } = require("json2csv");
 const logger = require("../config/logger.js");
+const { uploadImage, bucket } = require("../utils/gcs");
 
 // default property template
 const defaultPropertyData = {
@@ -150,20 +151,68 @@ exports.createProperty = async (req, res) => {
         .json({ error: "City, type, order, and gallery are required" });
     }
 
+    const uploaded = []; // track uploaded filenames for cleanup if needed
+    const uploadedGallery = [];
+
+    for (let i = 0; i < gallery.length; i++) {
+      const img = gallery[i];
+      // expect img.src to be dataURL: data:<mime>;base64,<data>
+      const matches = img.src && img.src.match(/^data:(.+);base64,(.+)$/);
+      if (!matches) {
+        // skip or throw depending on your policy
+        continue;
+      }
+      const mimeType = matches[1];
+      const buffer = Buffer.from(matches[2], "base64");
+      const ext = mimeType.split("/")[1] || "jpg";
+      const fileName = `property-${Date.now()}-${Math.round(
+        Math.random() * 1e9
+      )}-${i}.${ext}`;
+
+      // uploadImage saves file and returns public URL (no makePublic call)
+      const publicUrl = await uploadImage(buffer, fileName, mimeType);
+      uploaded.push(fileName); // track
+      uploadedGallery.push({
+        src: publicUrl,
+        href: publicUrl,
+        className: img.className || `item${i + 2} box-img`,
+      });
+    }
+
     // merge defaults with user-provided data (override default fields if provided)
     const newPropertyData = {
       ...defaultPropertyData,
       city,
       type,
-      gallery,
+      gallery: uploadedGallery,
       order,
     };
 
     const newProperty = await Property.create(newPropertyData);
 
-    res.status(201).json(newProperty);
+    return res.status(201).json(newProperty);
   } catch (error) {
-    res.status(500).json({ error: "Server Error", details: error.message });
+    logger.error("createProperty error", error);
+
+    // attempt cleanup: remove files we uploaded
+    if (typeof uploaded !== "undefined" && uploaded.length) {
+      try {
+        await Promise.all(
+          uploaded.map((name) =>
+            bucket
+              .file(name)
+              .delete()
+              .catch(() => null)
+          )
+        );
+      } catch (cleanupErr) {
+        logger.error("Cleanup error:", cleanupErr);
+      }
+    }
+
+    return res
+      .status(500)
+      .json({ error: "Server Error", details: error.message });
   }
 };
 
