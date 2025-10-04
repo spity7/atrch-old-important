@@ -27,4 +27,4 @@ async function uploadImage(fileBuffer, fileName, mimeType) {
   )}`;
 }
 
-module.exports = { uploadImage };
+module.exports = { uploadImage, bucket };

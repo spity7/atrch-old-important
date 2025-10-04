@@ -118,23 +118,93 @@ exports.updateProperty = async (req, res) => {
   try {
     const { propertyId } = req.params;
     const updateData = req.body;
-    console.log("Received updateData:", updateData); // <-- Add this
 
-    // Find and update the property by propertyId
+    console.log("Received updateData:", updateData);
+
+    // 1️⃣ Fetch existing property (to compare old gallery)
+    const existingProperty = await Property.findOne({
+      propertyId: Number(propertyId),
+    });
+
+    if (!existingProperty) {
+      return res.status(404).json({ error: "Property not found" });
+    }
+
+    const uploadedGallery = [];
+    const filesToDelete = [];
+
+    // 2️⃣ Process gallery updates
+    if (Array.isArray(updateData.gallery)) {
+      for (let i = 0; i < updateData.gallery.length; i++) {
+        const img = updateData.gallery[i];
+
+        // Case A: already a GCS URL → keep it
+        if (img.src && img.src.startsWith("http")) {
+          uploadedGallery.push(img);
+          continue;
+        }
+
+        // Case B: new base64 image → upload to GCS
+        const matches = img.src && img.src.match(/^data:(.+);base64,(.+)$/);
+        if (!matches) continue;
+
+        const mimeType = matches[1];
+        const buffer = Buffer.from(matches[2], "base64");
+        const ext = mimeType.split("/")[1] || "jpg";
+        const fileName = `property-${Date.now()}-${Math.round(
+          Math.random() * 1e9
+        )}-${i}.${ext}`;
+
+        const publicUrl = await uploadImage(buffer, fileName, mimeType);
+
+        uploadedGallery.push({
+          src: publicUrl,
+          href: publicUrl,
+          className: img.className || `item${i + 2} box-img`,
+        });
+
+        // If an image was replaced, mark old one for deletion
+        if (existingProperty.gallery[i]?.src?.startsWith("http")) {
+          const oldUrl = existingProperty.gallery[i].src;
+          const oldFileName = decodeURIComponent(oldUrl.split("/").pop());
+          filesToDelete.push(oldFileName);
+        }
+      }
+
+      updateData.gallery = uploadedGallery;
+    }
+
+    // 3️⃣ Update MongoDB
     const updatedProperty = await Property.findOneAndUpdate(
       { propertyId: Number(propertyId) },
       updateData,
       { new: true, runValidators: true }
     );
 
-    console.log("Updated property:", updatedProperty);
-
     if (!updatedProperty) {
       return res.status(404).json({ error: "Property not found" });
     }
 
+    // 4️⃣ Cleanup: delete replaced files from GCS
+    if (filesToDelete.length > 0) {
+      await Promise.all(
+        filesToDelete.map((fileName) =>
+          bucket
+            .file(fileName)
+            .delete()
+            .then(() => console.log(`Deleted old image: ${fileName}`))
+            .catch((err) =>
+              console.warn(`Skip delete ${fileName}:`, err.message)
+            )
+        )
+      );
+    }
+
+    console.log("Updated property:", updatedProperty);
+
     res.status(200).json(updatedProperty);
   } catch (error) {
+    console.error("updateProperty error:", error);
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
