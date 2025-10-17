@@ -144,6 +144,11 @@ exports.updateProperty = async (req, res) => {
           continue;
         }
 
+        if (img.src && img.src.startsWith("/")) {
+          uploadedGallery.push(img);
+          continue;
+        }
+
         // Case B: new base64 image → upload to GCS
         const matches = img.src && img.src.match(/^data:(.+);base64,(.+)$/);
         if (!matches) continue;
